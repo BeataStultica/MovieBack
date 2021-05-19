@@ -1,11 +1,12 @@
 const { Pool } = require("pg");
-//process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
+process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 console.log(process.env.DATABASE_URL);
 const db =
   process.env.NODE_ENV === "test" ? "movieplaza_test" : "dboqj906ps4mnl";
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL + "?ssl=true",
-  ssl: { rejectUnauthorized: false },
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+  //ssl: { rejectUnauthorized: false },
 });
 pool.connect();
 
